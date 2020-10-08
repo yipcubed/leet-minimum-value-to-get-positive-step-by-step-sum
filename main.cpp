@@ -41,29 +41,19 @@ static auto __ __attribute__((unused)) = []() { // NOLINT
 
 class Solution {
 public:
-  int minStartValue(vector<int> &nums) {
-    int total = 0;
-    int minStart = 1;
-    for (auto &&i : nums) {
-      total += i;
-      // PV1(total);
-      if (total + minStart < 1) {
-        minStart = -total + 1;
-        // PV2(total, minStart);
-      }
-    }
-    return minStart;
+  bool canBeEqual(vector<int> &target, vector<int> &arr) {
+    sort(target.begin(), target.end());
+    sort(arr.begin(), arr.end());
+    return target == arr;
   }
 };
 
 void test1() {
   cout << boolalpha;
-  vector<int> arr{-3, 2, -3, 4, 2};
-  vector<int> arr2{1, 2};
-  vector<int> arr3{1, -2, -3};
-  cout << "5 ? " << Solution().minStartValue(arr) << endl;
-  cout << "1 ? " << Solution().minStartValue(arr2) << endl;
-  cout << "5 ? " << Solution().minStartValue(arr3) << endl;
+  vector<int> arr{1, 2, 3, 4};
+  vector<int> arr2{2, 4, 1, 3};
+
+  cout << "1 ? " << Solution().canBeEqual(arr, arr2) << endl;
 }
 
 void test2() {}
